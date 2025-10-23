@@ -173,6 +173,18 @@ section {
 
     .showcaselayout {
       @apply flex xl:flex-row flex-col gap-10 justify-between;
+
+      .action-btn {
+        @apply flex;
+
+        .inner {
+          @apply flex flex-row justify-center gap-2 px-5 py-2 rounded-lg bg-white text-black group-hover:bg-black-50 transition-colors duration-300;
+
+          span {
+            @apply group-hover:text-white transition-colors duration-300;
+          }
+        }
+      }
     }
 
     .first-project-wrapper {
@@ -200,7 +212,7 @@ section {
     }
 
     .project-list-wrapper {
-      @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
+      @apply flex md:flex-row flex-col xl:flex-col gap-8 xl:w-[40%];
 
       .image-wrapper {
         @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
