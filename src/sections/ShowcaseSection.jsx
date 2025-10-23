@@ -54,7 +54,7 @@ const AppShowcase = () => {
         <div className="showcaselayout mt-22">
           <div ref={rydeRef} className="first-project-wrapper card-border rounded-xl p-8">
               <div className="image-wrapper">
-              <img src="/images/project1.png" className="object-fit" alt="Ryde App Interface"/>
+              <img src="/images/project1.png" alt="Ryde App Interface"/>
             </div>
             <div className="text-content">
               <h2>
@@ -73,7 +73,7 @@ const AppShowcase = () => {
                 <a href="#" className="action-btn group">
                   <div className="inner">
                     <img src="/images/live.png" alt="github Logo" className="w-6 h-6 object-fit"/>
-                    <span>Live Demo</span>
+                    <span>Live</span>
                   </div>
                 </a>
               </div>
@@ -85,7 +85,6 @@ const AppShowcase = () => {
               <div className="image-wrapper bg-[#FFEFDB]">
                 <img
                     src="/images/project2.png"
-                    className="object-fill"
                     alt="Library Management Platform"
                 />
               </div>
@@ -103,7 +102,7 @@ const AppShowcase = () => {
                 <a href="#" className="action-btn group">
                   <div className="inner">
                     <img src="/images/live.png" alt="github Logo" className="w-6 h-6 object-fit"/>
-                    <span>Live Demo</span>
+                    <span>Live</span>
                   </div>
                 </a>
               </div>
