@@ -112,10 +112,9 @@ const AppShowcase = () => {
               <div className="image-wrapper bg-[#FFE7EB]">
                 <img src="/images/project3.png" alt="YC Directory App" className="p-3"/>
               </div>
-              <h2>YC Directory - A Startup Showcase App</h2>
+              <h2>Financial Insight Hub</h2>
               <p className="text-white-50 md:text-md mt-2">
-                A web application designed to help organizations prevent phishing attacks by simulating real-world
-                phishing scenarios.
+                A powerful tool to gain clear visibility into your finances — track transactions, analyze trends, and take control of your money.
               </p>
               <div className="flex flex-row gap-4 mt-4">
                 <a href="#" className="action-btn group">

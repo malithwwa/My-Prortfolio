@@ -11,8 +11,8 @@ const Footer = () => {
         </div>
         <div className="socials">
           {socialImgs.map((socialImg, index) => (
-            <div key={index} className="icon">
-              <img src={socialImg.imgPath} alt="social icon" />
+            <div key={index} className="icon" onClick={()=>   window.open(socialImg.link ? socialImg.link : "#", '_blank', 'noopener,noreferrer')}>
+              <img src={socialImg.imgPath} alt="social icon" className={socialImg.class ? socialImg.class : "" }/>
             </div>
           ))}
         </div>
