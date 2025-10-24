@@ -24,15 +24,17 @@ const Button = ({ text, className, id }) => {
           // Scroll smoothly to that position
           window.scrollTo({ top, behavior: "smooth" });
         }
+          window.open('https://github.com/malithwwa', '_blank', 'noopener,noreferrer');
       }}
       className={`${className ?? ""} cta-wrapper`} // Add base + extra class names
     >
       <div className="cta-button group">
-        <div className="bg-circle" />
-        <p className="text">{text}</p>
-        <div className="arrow-wrapper">
-          <img src="/images/arrow-down.svg" alt="arrow" />
-        </div>
+              <div className="bg-circle"/>
+              <p className="text">{text}</p>
+              <div className="arrow-wrapper">
+                  <img src="/images/arrow-down.svg" alt="arrow"/>
+              </div>
+
       </div>
     </a>
   );

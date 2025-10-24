@@ -4,17 +4,17 @@ const navLinks = [
     link: "#work",
   },
   {
-    name: "Experience",
+    name: "Experience & Education",
     link: "#experience",
   },
   {
     name: "Skills",
     link: "#skills",
   },
-  {
-    name: "Testimonials",
-    link: "#testimonials",
-  },
+  // {
+  //   name: "Testimonials",
+  //   link: "#testimonials",
+  // },
 ];
 
 const words = [

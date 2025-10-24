@@ -108,7 +108,7 @@ const EducationExperience = () => {
                                 <span
                                     className="absolute w-6 h-6 md:w-8 md:h-8 rounded-full border-4 md:border-5 border-[#3385ff] -left-10 md:-left-16 top-14 z-60"/>
                                 <div
-                                    className="absolute -left-6.5  md:-left-11.5 top-22 md:top-24 h-[60%] w-[2px] md:w-[3px] rounded-full -translate-x-1 bg-[#3385ff] z-50"/>
+                                    className="absolute -left-6.5  md:-left-11.5 top-22 md:top-24 h-[56%] w-[2px] md:w-[3px] rounded-full -translate-x-1 bg-[#3385ff] z-50"/>
                                 {/*Content*/}
                                 <div className="exp-card-wrapper ml-10 my-10 pe-6">
                                     <div className="flex items-start">
