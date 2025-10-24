@@ -127,7 +127,7 @@ const AppShowcase = () => {
                 <a href="#" className="action-btn group">
                   <div className="inner">
                     <img src="/images/live.png" alt="github Logo" className="w-6 h-6 object-fit"/>
-                    <span>Live Demo</span>
+                    <span>Live</span>
                   </div>
                 </a>
               </div>
