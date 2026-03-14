@@ -112,3 +112,10 @@ a { text-decoration: none; color: inherit; }
   border-color: var(--border-hover);
   transform:    translateX(6px);
 }
+
+/* ── Global responsive overrides ────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 60px 16px;
+  }
+}

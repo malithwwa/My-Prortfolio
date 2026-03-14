@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import { PROFILE } from "@/data";
 import { Icons } from "@/components/UI";
 import s from "./Nav.module.css";
@@ -10,32 +11,78 @@ const SOCIALS = [
 ];
 
 export default function Nav({ dark, toggle, active }) {
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+
   return (
-    <nav className={s.nav} aria-label="Main navigation">
-      <div className={s.inner}>
-        <a href="#home" className={s.logo} aria-label="Home">
-          <span className={s.bracket}>{"<"}</span>KP<span className={s.bracket}>{"/>"}</span>
-        </a>
-        <div className={s.right}>
+    <>
+      <nav className={s.nav} aria-label="Main navigation">
+        <div className={s.inner}>
+          <a href="#home" className={s.logo} aria-label="Home" onClick={close}>
+            <span className={s.bracket}>{"<"}</span>KP<span className={s.bracket}>{"/>"}</span>
+          </a>
+
+          {/* Desktop right side */}
+          <div className={s.right}>
+            {LINKS.map((l) => (
+              <a key={l} href={`#${l.toLowerCase()}`}
+                className={`${s.link} ${active === l.toLowerCase() ? s.active : ""}`}>
+                {l}
+              </a>
+            ))}
+            <div className={s.socials}>
+              {SOCIALS.map(({ href, title, Icon }) => (
+                <a key={title} href={href} target="_blank" rel="noopener noreferrer"
+                  title={title} aria-label={title} className={s.iconBtn}>
+                  <Icon />
+                </a>
+              ))}
+            </div>
+            <button onClick={toggle} className={s.themeBtn} aria-label="Toggle theme">
+              {dark ? <Icons.Sun /> : <Icons.Moon />}
+            </button>
+          </div>
+
+          {/* Mobile controls */}
+          <div className={s.mobileRight}>
+            <button onClick={toggle} className={s.themeBtn} aria-label="Toggle theme">
+              {dark ? <Icons.Sun /> : <Icons.Moon />}
+            </button>
+            <button
+              className={`${s.hamburger} ${open ? s.hamburgerOpen : ""}`}
+              onClick={() => setOpen((o) => !o)}
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile drawer */}
+      <div className={`${s.drawer} ${open ? s.drawerOpen : ""}`} aria-hidden={!open}>
+        <div className={s.drawerLinks}>
           {LINKS.map((l) => (
             <a key={l} href={`#${l.toLowerCase()}`}
-              className={`${s.link} ${active === l.toLowerCase() ? s.active : ""}`}>
+              className={`${s.drawerLink} ${active === l.toLowerCase() ? s.drawerActive : ""}`}
+              onClick={close}>
               {l}
             </a>
           ))}
-          <div className={s.socials}>
-            {SOCIALS.map(({ href, title, Icon }) => (
-              <a key={title} href={href} target="_blank" rel="noopener noreferrer"
-                title={title} aria-label={title} className={s.iconBtn}>
-                <Icon />
-              </a>
-            ))}
-          </div>
-          <button onClick={toggle} className={s.themeBtn} aria-label="Toggle theme">
-            {dark ? <Icons.Sun /> : <Icons.Moon />}
-          </button>
+        </div>
+        <div className={s.drawerSocials}>
+          {SOCIALS.map(({ href, title, Icon }) => (
+            <a key={title} href={href} target="_blank" rel="noopener noreferrer"
+              title={title} aria-label={title} className={s.iconBtn} onClick={close}>
+              <Icon />
+            </a>
+          ))}
         </div>
       </div>
-    </nav>
+
+      {/* Backdrop */}
+      {open && <div className={s.backdrop} onClick={close} aria-hidden="true" />}
+    </>
   );
 }

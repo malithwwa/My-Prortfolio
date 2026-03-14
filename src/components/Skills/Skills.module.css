@@ -28,3 +28,10 @@
   color: var(--primary);
   border-color: var(--primary-border);
 }
+
+/* ── Mobile skills ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section { padding: 60px 16px; }
+  .grid    { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+  .card    { padding: 22px; }
+}

@@ -61,3 +61,12 @@
 }
 .btnSend:hover:not(.sent) { transform: translateY(-1px); opacity: 0.92; }
 .sent { background: var(--primary-sent); cursor: default; }
+
+/* ── Mobile contact ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section  { padding: 60px 16px; }
+  .formBox  { padding: 24px 20px; }
+  .row      { flex-direction: column; gap: 12px; margin-bottom: 12px; }
+  .links    { gap: 8px; }
+  .link     { font-size: 12px; padding: 8px 14px; }
+}
