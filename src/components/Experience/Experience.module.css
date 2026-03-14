@@ -1,0 +1,96 @@
+.section {
+  padding: var(--section-pad);
+  max-width: var(--max-w-md);
+  margin: 0 auto;
+}
+
+.timeline {
+  margin-top: 48px;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  left: 20px; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.item {
+  padding-left: 60px;
+  padding-bottom: 48px;
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  left: 12px; top: 6px;
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: var(--primary);
+  z-index: 1;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.card {
+  padding: 28px;
+  border-radius: var(--radius-md);
+}
+/* Slide direction handled by .glass-card--slide class in global.css */
+
+[data-theme="light"] .card {
+  background: rgba(255,255,255,0.7) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  border-color: rgba(0,0,0,0.11) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+[data-theme="light"] .card:hover {
+  border-color: rgba(31,111,235,0.3) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.role {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.company {
+  font-size: 14px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+.period {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--primary-dim);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  flex-shrink: 0;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  font-family: var(--font-body);
+  margin: 0;
+}

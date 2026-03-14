@@ -1,0 +1,124 @@
+.section {
+  padding: var(--section-pad);
+  background: transparent;
+}
+
+.inner {
+  max-width: var(--max-w-sm);
+  margin: 0 auto;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-mid);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 48px;
+}
+
+/* ── Social links ─────────────────────────────────────────── */
+.links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--text-mid);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+.link:hover {
+  border-color: var(--primary-border);
+  color: var(--text);
+  background: var(--primary-dim);
+}
+
+/* ── Form box ─────────────────────────────────────────────── */
+.formBox {
+  padding: 36px;
+  border-radius: var(--radius-xl);
+}
+
+[data-theme="light"] .formBox {
+  background: rgba(255,255,255,0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-color: rgba(0,0,0,0.11) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,1) !important;
+}
+
+/* Override glass-card hover for form (no lift) */
+.formBox:hover {
+  transform: none !important;
+  border-color: var(--glass-border) !important;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ── Inputs ───────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text);
+  box-sizing: border-box;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.input::placeholder { color: var(--text-dim); }
+
+.inputFocus { border-color: var(--text) !important; }
+
+.textarea {
+  resize: vertical;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* ── Send button ──────────────────────────────────────────── */
+.btnSend {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: var(--font-body);
+  transition: var(--transition-med);
+}
+.btnSend:hover:not(.btnSent) { transform: translateY(-1px); opacity: 0.92; }
+
+.btnSent {
+  background: #1a5fd4;
+  cursor: default;
+}
