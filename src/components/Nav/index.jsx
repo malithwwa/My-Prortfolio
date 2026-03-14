@@ -1,9 +1,9 @@
 import { PROFILE } from "@/data";
 import { Icons } from "@/components/UI";
-import styles from "./Nav.module.css";
+import s from "./Nav.module.css";
 
-const NAV_LINKS   = ["Home", "Skills", "Projects", "Experience", "Contact"];
-const NAV_SOCIALS = [
+const LINKS   = ["Home", "Skills", "Projects", "Experience", "Contact"];
+const SOCIALS = [
   { href: `mailto:${PROFILE.email}`,     title: "Email",    Icon: Icons.Email    },
   { href: `https://${PROFILE.linkedin}`, title: "LinkedIn", Icon: Icons.LinkedIn },
   { href: `https://${PROFILE.github}`,   title: "GitHub",   Icon: Icons.GitHub   },
@@ -11,37 +11,27 @@ const NAV_SOCIALS = [
 
 export default function Nav({ dark, toggle, active }) {
   return (
-    <nav className={styles.nav}>
-      <div className={styles.inner}>
-        {/* Logo */}
-        <a href="#home" className={styles.logo}>
-          <span className={styles.bracket}>{"<"}</span>KP<span className={styles.bracket}>{"/>"}</span>
+    <nav className={s.nav} aria-label="Main navigation">
+      <div className={s.inner}>
+        <a href="#home" className={s.logo} aria-label="Home">
+          <span className={s.bracket}>{"<"}</span>KP<span className={s.bracket}>{"/>"}</span>
         </a>
-
-        {/* Right side */}
-        <div className={styles.right}>
-          {/* Nav links */}
-          {NAV_LINKS.map((l) => (
-            <a
-              key={l}
-              href={`#${l.toLowerCase()}`}
-              className={`${styles.link} ${active === l.toLowerCase() ? styles.linkActive : ""}`}
-            >
+        <div className={s.right}>
+          {LINKS.map((l) => (
+            <a key={l} href={`#${l.toLowerCase()}`}
+              className={`${s.link} ${active === l.toLowerCase() ? s.active : ""}`}>
               {l}
             </a>
           ))}
-
-          {/* Social icons */}
-          <div className={styles.socials}>
-            {NAV_SOCIALS.map(({ href, title, Icon }) => (
-              <a key={title} href={href} target="_blank" rel="noopener noreferrer" title={title} className={styles.iconBtn}>
+          <div className={s.socials}>
+            {SOCIALS.map(({ href, title, Icon }) => (
+              <a key={title} href={href} target="_blank" rel="noopener noreferrer"
+                title={title} aria-label={title} className={s.iconBtn}>
                 <Icon />
               </a>
             ))}
           </div>
-
-          {/* Theme toggle */}
-          <button onClick={toggle} className={styles.themeBtn} aria-label="Toggle theme">
+          <button onClick={toggle} className={s.themeBtn} aria-label="Toggle theme">
             {dark ? <Icons.Sun /> : <Icons.Moon />}
           </button>
         </div>

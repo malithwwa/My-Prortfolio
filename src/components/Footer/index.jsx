@@ -1,10 +1,10 @@
 import { PROFILE } from "@/data";
-import styles from "./Footer.module.css";
+import s from "./Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <p className={styles.text}>
+    <footer className={s.footer}>
+      <p className={s.text}>
         Crafted with ❤️ in Colombo, Sri Lanka · {new Date().getFullYear()} {PROFILE.name}
       </p>
     </footer>

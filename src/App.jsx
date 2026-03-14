@@ -15,11 +15,11 @@ export default function App() {
     <>
       <Nav dark={dark} toggle={toggle} active={active} />
       <main>
-        <Hero      dark={dark} />
-        <Skills    />
-        <Projects  />
+        <Hero     dark={dark} />
+        <Skills   />
+        <Projects />
         <Experience />
-        <Contact   dark={dark} />
+        <Contact  />
       </main>
       <Footer />
     </>

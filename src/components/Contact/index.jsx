@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { PROFILE } from "@/data";
 import { Reveal, SectionHeader } from "@/components/UI";
-import styles from "./Contact.module.css";
+import s from "./Contact.module.css";
 
 const LINKS = [
   { icon: "📧", label: PROFILE.email,    href: `mailto:${PROFILE.email}` },
@@ -9,12 +9,11 @@ const LINKS = [
   { icon: "🐙", label: PROFILE.github,   href: `https://${PROFILE.github}` },
 ];
 
-function ContactForm({ dark }) {
-  const [sent, setSent]   = useState(false);
-  const [form, setForm]   = useState({ name: "", email: "", message: "" });
+function ContactForm() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const update = useCallback((field) => (e) =>
-    setForm((f) => ({ ...f, [field]: e.target.value })), []);
+  const update = useCallback((f) => (e) => setForm((p) => ({ ...p, [f]: e.target.value })), []);
 
   const submit = useCallback(() => {
     if (!form.name || !form.email || !form.message) return;
@@ -23,69 +22,37 @@ function ContactForm({ dark }) {
   }, [form]);
 
   return (
-    <div className={`glass-card ${styles.formBox}`}>
-      <div className={styles.row}>
-        <input
-          value={form.name}
-          onChange={update("name")}
-          placeholder="Your name"
-          className={styles.input}
-          onFocus={e  => e.target.classList.add(styles.inputFocus)}
-          onBlur={e   => e.target.classList.remove(styles.inputFocus)}
-        />
-        <input
-          value={form.email}
-          onChange={update("email")}
-          placeholder="Email address"
-          className={styles.input}
-          onFocus={e  => e.target.classList.add(styles.inputFocus)}
-          onBlur={e   => e.target.classList.remove(styles.inputFocus)}
-        />
+    <div className={`glass ${s.formBox}`}>
+      <div className={s.row}>
+        <input value={form.name}  onChange={update("name")}  placeholder="Your name"      className={s.input} />
+        <input value={form.email} onChange={update("email")} placeholder="Email address"  className={s.input} />
       </div>
-      <textarea
-        value={form.message}
-        onChange={update("message")}
-        placeholder="Tell me about your project..."
-        rows={5}
-        className={`${styles.input} ${styles.textarea}`}
-        onFocus={e  => e.target.classList.add(styles.inputFocus)}
-        onBlur={e   => e.target.classList.remove(styles.inputFocus)}
-      />
-      <button
-        onClick={submit}
-        className={`${styles.btnSend} ${sent ? styles.btnSent : ""}`}
-      >
+      <textarea value={form.message} onChange={update("message")} placeholder="Tell me about your project..." rows={5} className={`${s.input} ${s.textarea}`} />
+      <button onClick={submit} className={`${s.btnSend} ${sent ? s.sent : ""}`} disabled={sent}>
         {sent ? "✓ Message Sent!" : "Send Message →"}
       </button>
     </div>
   );
 }
 
-export default function ContactSection({ dark }) {
+export default function Contact() {
   return (
-    <section id="contact" className={styles.section}>
-      <div className={styles.inner}>
+    <section id="contact" className={s.section}>
+      <div className={s.inner}>
         <Reveal><SectionHeader tag="Contact" title="Let's Work Together" /></Reveal>
-
         <Reveal delay={100}>
-          <p className={styles.subtitle}>
+          <p className={s.subtitle}>
             Have a project in mind or just want to say hi? Drop me a message — I usually respond within 24 hours.
           </p>
         </Reveal>
-
         <Reveal delay={200}>
-          <div className={styles.links}>
+          <div className={s.links}>
             {LINKS.map(({ icon, label, href }) => (
-              <a key={href} href={href} className={styles.link}>
-                {icon} {label}
-              </a>
+              <a key={href} href={href} className={s.link}>{icon} {label}</a>
             ))}
           </div>
         </Reveal>
-
-        <Reveal delay={300}>
-          <ContactForm dark={dark} />
-        </Reveal>
+        <Reveal delay={300}><ContactForm /></Reveal>
       </div>
     </section>
   );

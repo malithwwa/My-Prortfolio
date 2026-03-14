@@ -1,18 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// ── useTheme ─────────────────────────────────────────────────────
+// ── useTheme ─────────────────────────────────────────────────
 export function useTheme() {
   const [dark, setDark] = useState(true);
-
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
   }, [dark]);
-
   const toggle = useCallback(() => setDark((d) => !d), []);
   return { dark, toggle };
 }
 
-// ── useActiveSection ──────────────────────────────────────────────
+// ── useActiveSection ──────────────────────────────────────────
 export function useActiveSection() {
   const [active, setActive] = useState("home");
   useEffect(() => {
@@ -26,7 +24,7 @@ export function useActiveSection() {
   return active;
 }
 
-// ── useScrollReveal ───────────────────────────────────────────────
+// ── useScrollReveal ───────────────────────────────────────────
 export function useScrollReveal(threshold = 0.12) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -43,63 +41,61 @@ export function useScrollReveal(threshold = 0.12) {
   return [ref, visible];
 }
 
-// ── useTypewriter ─────────────────────────────────────────────────
-export function useTypewriter(words, { typeSpeed = 60, deleteSpeed = 35, pause = 2000, gap = 400 } = {}) {
+// ── useTypewriter ─────────────────────────────────────────────
+export function useTypewriter(words) {
   const [typed, setTyped] = useState("");
-  const wordIdx  = useRef(0);
-  const charIdx  = useRef(0);
-  const deleting = useRef(false);
+  const idx     = useRef(0);
+  const charIdx = useRef(0);
+  const del     = useRef(false);
 
   useEffect(() => {
-    let timer;
+    let t;
     const tick = () => {
-      const word = words[wordIdx.current];
-      if (!deleting.current) {
+      const word = words[idx.current];
+      if (!del.current) {
         if (charIdx.current < word.length) {
-          charIdx.current++;
-          setTyped(word.slice(0, charIdx.current));
-          timer = setTimeout(tick, typeSpeed);
+          setTyped(word.slice(0, ++charIdx.current));
+          t = setTimeout(tick, 60);
         } else {
-          timer = setTimeout(() => { deleting.current = true; tick(); }, pause);
+          t = setTimeout(() => { del.current = true; tick(); }, 2000);
         }
       } else {
         if (charIdx.current > 0) {
-          charIdx.current--;
-          setTyped(word.slice(0, charIdx.current));
-          timer = setTimeout(tick, deleteSpeed);
+          setTyped(word.slice(0, --charIdx.current));
+          t = setTimeout(tick, 35);
         } else {
-          deleting.current = false;
-          wordIdx.current  = (wordIdx.current + 1) % words.length;
-          timer = setTimeout(tick, gap);
+          del.current = false;
+          idx.current = (idx.current + 1) % words.length;
+          t = setTimeout(tick, 400);
         }
       }
     };
-    timer = setTimeout(tick, 800);
-    return () => clearTimeout(timer);
+    t = setTimeout(tick, 800);
+    return () => clearTimeout(t);
   }, []); // eslint-disable-line
-
   return typed;
 }
 
-// ── useCountUp ────────────────────────────────────────────────────
-export function useCountUp(target, { duration = 1800, steps = 60, delay = 0 } = {}) {
-  const [count, setCount] = useState(0);
-  const [ref, visible]   = useScrollReveal(0.5);
-  const started          = useRef(false);
+// ── useCountUp ────────────────────────────────────────────────
+export function useCountUp(target, delay = 0) {
+  const [count, setCount]  = useState(0);
+  const [ref, visible]     = useScrollReveal(0.5);
+  const started            = useRef(false);
 
   useEffect(() => {
     if (!visible || started.current) return;
     started.current = true;
-    const timer = setTimeout(() => {
+    const t = setTimeout(() => {
       let step = 0;
+      const steps = 60;
       const iv = setInterval(() => {
         step++;
         setCount(Math.round(target * (1 - Math.pow(1 - step / steps, 3))));
         if (step >= steps) { setCount(target); clearInterval(iv); }
-      }, duration / steps);
+      }, 1800 / steps);
     }, delay);
-    return () => clearTimeout(timer);
-  }, [visible, target, delay, duration, steps]);
+    return () => clearTimeout(t);
+  }, [visible, target, delay]);
 
   return [ref, count];
 }

@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
 @import './tokens.css';
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,17 +13,18 @@ body {
   background: var(--bg);
   color: var(--text);
   transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
 }
 
-a { text-decoration: none; }
+a { text-decoration: none; color: inherit; }
 
-::selection { background: rgba(31, 111, 235, 0.3); }
+::selection { background: rgba(31,111,235,0.3); }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(31, 111, 235, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(31,111,235,0.4); border-radius: 3px; }
 
-/* ── Animations ───────────────────────────────────────────────── */
+/* ── Keyframes ──────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -42,83 +42,73 @@ a { text-decoration: none; }
   100% { background-position:  200% center; }
 }
 
-/* ── Animation helpers ────────────────────────────────────────── */
-.anim-fade-1  { animation: fadeUp 0.6s 0.0s  ease both; opacity: 0; }
-.anim-fade-2  { animation: fadeUp 0.6s 0.1s  ease both; opacity: 0; }
-.anim-fade-3  { animation: fadeUp 0.6s 0.2s  ease both; opacity: 0; }
-.anim-fade-4  { animation: fadeUp 0.6s 0.3s  ease both; opacity: 0; }
-.anim-fade-5  { animation: fadeUp 0.6s 0.4s  ease both; opacity: 0; }
-.anim-fade-6  { animation: fadeUp 0.6s 0.45s ease both; opacity: 0; }
-.anim-fade-7  { animation: fadeUp 0.6s 0.5s  ease both; opacity: 0; }
-.anim-fade-8  { animation: fadeUp 0.6s 0.6s  ease both; opacity: 0; }
-.blink        { animation: blink  1s step-end infinite; }
-.pulse-dot    { animation: pulse  2s infinite; }
+/* ── Staggered fade-up helpers ──────────────────────────────── */
+.anim-1 { animation: fadeUp 0.6s 0.00s ease both; opacity: 0; }
+.anim-2 { animation: fadeUp 0.6s 0.10s ease both; opacity: 0; }
+.anim-3 { animation: fadeUp 0.6s 0.20s ease both; opacity: 0; }
+.anim-4 { animation: fadeUp 0.6s 0.30s ease both; opacity: 0; }
+.anim-5 { animation: fadeUp 0.6s 0.40s ease both; opacity: 0; }
+.anim-6 { animation: fadeUp 0.6s 0.45s ease both; opacity: 0; }
+.anim-7 { animation: fadeUp 0.6s 0.50s ease both; opacity: 0; }
+.anim-8 { animation: fadeUp 0.6s 0.60s ease both; opacity: 0; }
+.blink    { animation: blink 1s step-end infinite; }
+.pulse    { animation: pulse 2s infinite; }
 
-/* ── Glass card system ────────────────────────────────────────── */
-.glass-card {
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-card);
-  transition: var(--transition-card);
-  position: relative;
-  overflow: hidden;
+/* ── Glass card ─────────────────────────────────────────────── */
+.glass {
+  background:        var(--glass-bg);
+  border:            1px solid var(--glass-border);
+  box-shadow:        var(--shadow-card);
+  backdrop-filter:   blur(22px) saturate(200%);
+  -webkit-backdrop-filter: blur(22px) saturate(200%);
+  transition:        all 0.35s var(--ease-card);
+  position:          relative;
+  overflow:          hidden;
 }
 
 /* Diagonal highlight sheen */
-.glass-card::before {
+.glass::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(31,111,235,0.02) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 50%, rgba(31,111,235,0.02) 100%);
   pointer-events: none;
   z-index: 0;
 }
-
-[data-theme="light"] .glass-card::before {
-  background: linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 50%, rgba(31,111,235,0.04) 100%);
+[data-theme="light"] .glass::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.08) 55%, rgba(31,111,235,0.04) 100%);
 }
 
-/* Shimmer sweep on hover */
-.glass-card::after {
+/* Shimmer sweep */
+.glass::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.12) 50%, transparent 65%);
+  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.05) 50%, transparent 62%);
   background-size: 200% 100%;
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
   z-index: 2;
 }
-.glass-card:hover::after {
-  opacity: 1;
-  animation: liquidShimmer 0.7s ease forwards;
+.glass:hover::after {
+  opacity: 0.6;
+  animation: liquidShimmer 1.2s ease forwards;
 }
 
-/* All direct children sit above the pseudo-elements */
-.glass-card > * { position: relative; z-index: 1; }
+.glass > * { position: relative; z-index: 1; }
 
-/* Card hover lift */
-.glass-card:hover {
+/* Lift hover variant */
+.glass--lift:hover {
+  border-color:  var(--border-hover);
+  box-shadow:    var(--shadow-hover);
+  transform:     translateY(-6px);
+}
+
+/* Slide hover variant (experience cards) */
+.glass--slide:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-6px);
+  transform:    translateX(6px);
 }
-
-/* Experience card: slide right instead of lift */
-.glass-card--slide:hover {
-  transform: translateX(6px) !important;
-}
-
-/* ── Utility classes ─────────────────────────────────────────── */
-.section-pad   { padding: var(--section-pad); }
-.max-w         { max-width: var(--max-w);    margin: 0 auto; }
-.max-w-md      { max-width: var(--max-w-md); margin: 0 auto; }
-.max-w-sm      { max-width: var(--max-w-sm); margin: 0 auto; }
-.text-center   { text-align: center; }
-.font-heading  { font-family: var(--font-heading); }
-.font-body     { font-family: var(--font-body); }

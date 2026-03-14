@@ -1,57 +1,54 @@
 import { PROFILE, HERO_ROLES, HERO_STATS } from "@/data";
 import { useTypewriter } from "@/hooks";
 import { CountUp } from "@/components/UI";
-import styles from "./Hero.module.css";
+import s from "./Hero.module.css";
 
-export default function HeroSection({ dark }) {
+export default function Hero({ dark }) {
   const typed = useTypewriter(HERO_ROLES);
 
   return (
-    <section id="home" className={styles.section}>
-      <div className={styles.content}>
+    <section id="home" className={s.section}>
+      <div className={s.content}>
 
         {/* Available badge */}
-        <div className={`${styles.badge} anim-fade-1`}>
-          <span className={`${styles.dot} pulse-dot`} />
-          <span>Available for opportunities</span>
+        <div className={`${s.badge} anim-1`}>
+          <span className={`${s.dot} pulse`} />
+          Available for opportunities
         </div>
 
         {/* Avatar */}
-        <div className={`${styles.avatar} anim-fade-2`}>
-          {PROFILE.avatar}
-        </div>
+        <div className={`${s.avatar} anim-2`}>{PROFILE.avatar}</div>
 
         {/* Name */}
-        <h1 className={`${styles.name} anim-fade-3`}>{PROFILE.name}</h1>
+        <h1 className={`${s.name} anim-3`}>{PROFILE.name}</h1>
 
         {/* Typewriter */}
-        <div className={`${styles.typeRow} anim-fade-4`}>
-          <span className={styles.typed}>
-            {typed}
-            <span className={`${styles.cursor} blink`}>&nbsp;</span>
+        <div className={`${s.typeRow} anim-4`}>
+          <span className={s.typed}>
+            {typed}<span className={`${s.cursor} blink`}>&nbsp;</span>
           </span>
         </div>
 
         {/* Bio */}
-        <p className={`${styles.bio} anim-fade-5`}>{PROFILE.bio}</p>
+        <p className={`${s.bio} anim-5`}>{PROFILE.bio}</p>
 
         {/* Location */}
-        <p className={`${styles.location} anim-fade-6`}>📍 {PROFILE.location}</p>
+        <p className={`${s.location} anim-6`}>📍 {PROFILE.location}</p>
 
-        {/* CTA buttons */}
-        <div className={`${styles.ctas} anim-fade-7`}>
-          <a href="#projects" className={styles.btnPrimary}>View Projects →</a>
-          <a href="#contact"  className={styles.btnOutline}>Get In Touch</a>
+        {/* CTA */}
+        <div className={`${s.ctas} anim-7`}>
+          <a href="#projects" className={s.btnPrimary}>View Projects →</a>
+          <a href="#contact"  className={s.btnOutline}>Get In Touch</a>
         </div>
 
         {/* Stats */}
-        <div className={`${styles.stats} anim-fade-8`}>
+        <div className={`${s.stats} anim-8`}>
           {HERO_STATS.map(({ num, suffix, label }, i) => (
-            <div key={label} className={styles.stat} data-last={i === HERO_STATS.length - 1 || undefined}>
-              <div className={styles.statNum}>
+            <div key={label} className={s.stat}>
+              <span className={s.statNum}>
                 <CountUp target={num} suffix={suffix} delay={i * 150} />
-              </div>
-              <div className={styles.statLabel}>{label}</div>
+              </span>
+              <span className={s.statLabel}>{label}</span>
             </div>
           ))}
         </div>

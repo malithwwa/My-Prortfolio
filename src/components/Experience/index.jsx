@@ -1,33 +1,33 @@
 import { EXPERIENCE } from "@/data";
 import { Reveal, SectionHeader } from "@/components/UI";
-import styles from "./Experience.module.css";
+import s from "./Experience.module.css";
 
-function ExperienceCard({ item }) {
+function ExpCard({ item }) {
   return (
-    <div className={`glass-card glass-card--slide ${styles.card}`}>
-      <div className={styles.cardTop}>
+    <div className={`glass glass--slide ${s.card}`}>
+      <div className={s.top}>
         <div>
-          <h3 className={styles.role}>{item.role}</h3>
-          <div className={styles.company}>{item.company}</div>
+          <h3 className={s.role}>{item.role}</h3>
+          <div className={s.company}>{item.company}</div>
         </div>
-        <span className={styles.period}>{item.period}</span>
+        <span className={s.period}>{item.period}</span>
       </div>
-      <p className={styles.desc}>{item.desc}</p>
+      <p className={s.desc}>{item.desc}</p>
     </div>
   );
 }
 
-export default function ExperienceSection() {
+export default function Experience() {
   return (
-    <section id="experience" className={styles.section}>
+    <section id="experience" className={s.section}>
       <Reveal><SectionHeader tag="Career" title="Work Experience" /></Reveal>
-      <div className={styles.timeline}>
-        <div className={styles.line} />
+      <div className={s.timeline}>
+        <div className={s.line} />
         {EXPERIENCE.map((item, i) => (
           <Reveal key={i} delay={i * 120} direction="left">
-            <div className={styles.item}>
-              <div className={styles.dot} />
-              <ExperienceCard item={item} />
+            <div className={s.item}>
+              <div className={s.dot} />
+              <ExpCard item={item} />
             </div>
           </Reveal>
         ))}

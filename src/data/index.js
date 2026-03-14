@@ -24,10 +24,10 @@ export const HERO_STATS = [
 ];
 
 export const SKILLS = [
-  { category: "Frontend",      items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"] },
-  { category: "Backend",       items: ["Node.js", "Express", "Spring Boot", "Python", "FastAPI"] },
-  { category: "Database",      items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Firebase"] },
-  { category: "DevOps & Cloud",items: ["Docker", "AWS", "CI/CD", "Kubernetes", "Terraform"] },
+  { category: "Frontend",       items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"] },
+  { category: "Backend",        items: ["Node.js", "Express", "Spring Boot", "Python", "FastAPI"] },
+  { category: "Database",       items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Firebase"] },
+  { category: "DevOps & Cloud", items: ["Docker", "AWS", "CI/CD", "Kubernetes", "Terraform"] },
 ];
 
 export const PROJECTS = [
