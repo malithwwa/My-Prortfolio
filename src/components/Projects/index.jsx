@@ -14,7 +14,7 @@ function ProjectCard({ p }) {
     >
       {/* Banner */}
       <div className={s.banner}>
-        <div className={s.grid} />
+        <div className={s.gridSquare} />
         <div className={`${s.icon} ${hov ? s.iconHov : ""}`}>{p.icon}</div>
         <div className={s.liveBadge}>Live</div>
       </div>
