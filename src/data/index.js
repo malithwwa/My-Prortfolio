@@ -1,12 +1,12 @@
 export const PROFILE = {
-  name:     "Kavinda Perera",
+  name:     "Malith Anjana",
   title:    "Software Engineer",
   location: "Colombo, Sri Lanka 🇱🇰",
-  email:    "kavinda@example.com",
-  github:   "github.com/kavinda",
-  linkedin: "linkedin.com/in/kavinda",
+  email:    "malithwwa@gmail.com",
+  github:   "github.com/malithwwa",
+  linkedin: "linkedin.com/in/malithwwa",
   bio:      "I craft scalable, high-performance web applications with a passion for clean architecture and elegant user experiences. 5+ years turning complex problems into elegant digital solutions.",
-  avatar:   "KP",
+  avatar:   "MA",
 };
 
 export const HERO_ROLES = [

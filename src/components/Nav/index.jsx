@@ -19,7 +19,7 @@ export default function Nav({ dark, toggle, active }) {
       <nav className={s.nav} aria-label="Main navigation">
         <div className={s.inner}>
           <a href="#home" className={s.logo} aria-label="Home" onClick={close}>
-            <span className={s.bracket}>{"<"}</span>KP<span className={s.bracket}>{"/>"}</span>
+            <span className={s.bracket}>{"<"}</span>MA<span className={s.bracket}>{"/>"}</span>
           </a>
 
           {/* Desktop right side */}
